@@ -11,6 +11,7 @@ import javax.persistence.Embeddable;
 import java.time.ZonedDateTime;
 
 @Embeddable
+@Data
 public class ECreateInfo {
   public ECreateInfo() {
   }
@@ -19,7 +20,6 @@ public class ECreateInfo {
     this.createdOn = createdOn;
     this.createdBy = createdBy;
   }
-
   @CreatedDate
   @Column(name = "CREATED_ON", nullable = true,updatable = false)
   private ZonedDateTime createdOn;
@@ -27,20 +27,4 @@ public class ECreateInfo {
   @CreatedBy
   @Column(name = "CREATED_BY", nullable = true,updatable = false)
   private String createdBy;
-
-  public ZonedDateTime getCreatedOn() {
-    return createdOn;
-  }
-
-  public void setCreatedOn(ZonedDateTime createdOn) {
-    this.createdOn = createdOn;
-  }
-
-  public String getCreatedBy() {
-    return createdBy;
-  }
-
-  public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-  }
 }

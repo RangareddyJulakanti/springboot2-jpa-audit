@@ -1,5 +1,6 @@
 package com.ranga.model;
 
+import lombok.Data;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -10,6 +11,7 @@ import javax.persistence.EntityListeners;
 import java.time.ZonedDateTime;
 
 @Embeddable
+@Data
 public class EUpdateInfo {
   @LastModifiedDate
   @Column(name = "UPDATED_ON", nullable = true, insertable = false)
@@ -25,25 +27,6 @@ public class EUpdateInfo {
     this.lastUpdatedOn = lastUpdatedOn;
     this.lastUpdatedBy = lastUpdatedBy;
   }
-
-  public ZonedDateTime getLastUpdatedOn() {
-    return this.lastUpdatedOn;
-  }
-
-  public EUpdateInfo setLastUpdatedOn(ZonedDateTime lastUpdatedOn) {
-    this.lastUpdatedOn = lastUpdatedOn;
-    return this;
-  }
-
-  public String getLastUpdatedBy() {
-    return this.lastUpdatedBy;
-  }
-
-  public EUpdateInfo setLastUpdatedBy(String lastUpdatedBy) {
-    this.lastUpdatedBy = lastUpdatedBy;
-    return this;
-  }
-
   public String toString() {
     return "Updated by - " + this.lastUpdatedBy + " on " + this.lastUpdatedOn;
   }
