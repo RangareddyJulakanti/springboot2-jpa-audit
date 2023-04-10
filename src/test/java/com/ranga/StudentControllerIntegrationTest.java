@@ -57,7 +57,7 @@ public class StudentControllerIntegrationTest {
 	@Test
 	public void testCreateEmployee() {
 		Student student = new Student();
-		student.setEmailId("admin@gmail.com");
+		//student.setEmailId("admin@gmail.com");
 		student.setFirstName("admin");
 		student.setLastName("admin");
 

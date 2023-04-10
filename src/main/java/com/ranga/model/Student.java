@@ -2,23 +2,24 @@ package com.ranga.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import java.io.Serializable;
 
 @Entity(name = "STUDENT_TABLE")
 @Table(name = "student")
-@Data
-@EntityListeners(PersistableEntityListener.class)
-public class Student extends AbstractPersistable<Long> implements EAuditable.Create,EAuditable.Update {
-	@Embedded
-	private ECreateInfo createInfo;
-	@Embedded
-	private EUpdateInfo updateInfo;
+@Getter
+@Setter
+public class Student  implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id",nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	@Size(min = 5,message = "{FirstName.Is.Invalid}")
 	@Column(name = "first_name", nullable = false)
 	@JsonProperty("first_name")
 	private String firstName;
@@ -27,17 +28,4 @@ public class Student extends AbstractPersistable<Long> implements EAuditable.Cre
 	@JsonProperty("last_name")
 	private String lastName;
 
-	@Column(name = "email_address", nullable = false)
-	@JsonProperty("email_address")
-	private String emailId;
-
-	@Column(name = "branch", nullable =false)
-	@JsonProperty("branch")
-	private String branch;
-
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId
-				+ "]";
-	}
 }
