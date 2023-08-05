@@ -35,4 +35,5 @@ public class Application {
 	public void start(){
 		studentRepository.findByFirstNameOrLastName("ranga","raju");
 	}
+
 }
